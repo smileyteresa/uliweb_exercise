@@ -3,7 +3,7 @@ from uliweb.orm import *
 
 def blogs(Model):
     user_id = Field(INT)
-    title = Field(CHAE)
+    title = Field(CHAR)
     content = Field(TEXT)
     addtime = Field(datetime.datetime, auto_now_add = True)
 

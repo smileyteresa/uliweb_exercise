@@ -5,6 +5,5 @@ from forms import BlogsForm, CommentsForm
 
 @expose('/')
 def index():
-    blog = blogs.all()
     form = BlogsForm()
-    return {'blog':blog, 'form':form}
+    return {'form':form}
