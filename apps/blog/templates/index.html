@@ -1,5 +1,38 @@
 {{extend "layout.html"}}
 {{block user_info}}{{end}}
 {{block content}}
-{{<<form}}
+<style type="text/css">
+.list {
+    width: 600px;
+    padding: 5px;
+}
+.view {
+    width: 600px;
+    margin-bottom: 20px;
+}
+.text {
+    margin-top: 7px;
+    padding: 7px 0px 7px 0px;
+    border-top: 1px solid #DDDDDD;
+    border-bottom: 1px dotted #DDDDDD;
+}
+.foot {
+    margin-top: 10px;
+    float: right;
+}
+</style>
+
+<div class="list">
+    {{for c in blog:}}
+        <div class="view clearfix">
+            <h3>{{=c.title}}</h3>
+            <div class="text">
+                {{<<c.content}}
+            </div>
+            <div class="foot">
+                <span>发布时间:{{=c.addtime}}</span><span><a href="/view/{{=c.id}}">评论</a><span>
+            </div>
+        </div>
+    {{pass}}
+</div>
 {{end}}

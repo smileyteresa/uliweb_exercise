@@ -1,0 +1,59 @@
+{{extend "layout.html"}}
+{{block user_info}}{{end}}
+{{block content}}
+<style type="text/css">
+.list {
+    width: 600px;
+    padding: 5px;
+}
+.view {
+    width: 600px;
+    margin-bottom: 20px;
+}
+.text {
+    margin-top: 7px;
+    padding: 7px 0px 7px 0px;
+    border-top: 1px solid #DDDDDD;
+    border-bottom: 1px dotted #DDDDDD;
+}
+.foot {
+    margin-top: 10px;
+    float: right;
+}
+</style>
+
+<div class="list">
+    <div class="view clearfix">
+        <h3>{{=info.title}}</h3>
+        <div class="text">
+            {{<<info.content}}
+        </div>
+        <div class="foot">
+            <span>发布时间:{{=info.addtime}}</span>
+        </div>
+    </div>
+
+    <div class="view clearfix">
+        {{<<form}}
+    </div>
+
+    {{for c in comment:}}
+        <div class="view clearfix">
+            <div class="text">
+                {{<<c.content}}
+            </div>
+            <div class="foot">
+                <span>{{=c.username}}</span><span>发布于:{{=c.addtime}}</span>
+            </div>
+        </div>
+    {{pass}}
+</div>
+{{if hasattr(request, 'user') and request.user:}}
+<script type="text/javascript">
+    var username = '{{=request.user.username}}';
+    var field = document.getElementById('field_username');
+    field.value = username;
+</script>
+{{pass}}
+
+{{end}}

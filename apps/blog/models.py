@@ -1,14 +1,14 @@
 # -*- coding: utf-8 -*-
 from uliweb.orm import *
 
-def blogs(Model):
-    user_id = Field(INT)
+class blogs(Model):
+    username = Field(CHAR)
     title = Field(CHAR)
     content = Field(TEXT)
     addtime = Field(datetime.datetime, auto_now_add = True)
 
-def comments(Model):
-    user_id = Field(INT)
-    blog_id = Field(INT)
+class comments(Model):
+    username = Field(CHAR)
+    blog_id = Field(int)
     content = Field(TEXT)
     addtime = Field(datetime.datetime, auto_now_add = True)
